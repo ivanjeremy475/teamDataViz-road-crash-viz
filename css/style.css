@@ -1,1 +1,120 @@
-/* styles */
+/* ==========================================================
+   style.css - site styles for the road crash injuries story
+   Palette is colour-blind-friendly: blue and amber carry the
+   main contrast, red is reserved for emphasis only.
+   ========================================================== */
+
+:root {
+  --paper: #f4f6f8;
+  --surface: #ffffff;
+  --ink: #1c2b39;
+  --muted: #55636f;
+  --line: #d3dae0;
+  --blue: #1f5f8b;
+  --amber: #c98a00;
+  --red: #b3362f;
+  --radius: 4px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+h1, h2 {
+  font-family: "Newsreader", Georgia, serif;
+  line-height: 1.15;
+  margin: 0 0 0.6em;
+}
+h1 { font-size: clamp(2rem, 5vw, 3.2rem); max-width: 22ch; }
+h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
+p  { max-width: 62ch; margin: 0 0 1em; }
+
+a { color: var(--blue); }
+a:focus-visible, button:focus-visible {
+  outline: 3px solid var(--amber);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  position: absolute; left: -999px; top: 0;
+  background: var(--ink); color: #fff; padding: 0.5rem 1rem;
+}
+.skip-link:focus { left: 0; z-index: 20; }
+
+/* ---------- Header / navigation ---------- */
+.site-header {
+  position: sticky; top: 0; z-index: 10;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+.site-header nav {
+  max-width: 1100px; margin: 0 auto; padding: 0.75rem 1.25rem;
+  display: flex; flex-wrap: wrap; gap: 0.5rem 2rem;
+  align-items: center; justify-content: space-between;
+}
+.brand { font-weight: 600; }
+.site-header ul { list-style: none; display: flex; flex-wrap: wrap; gap: 1.25rem; margin: 0; padding: 0; }
+.site-header a { text-decoration: none; color: var(--ink); }
+.site-header a:hover { color: var(--blue); text-decoration: underline; }
+
+/* ---------- Layout ---------- */
+main { max-width: 1100px; margin: 0 auto; padding: 0 1.25rem; }
+
+.hero { padding: 4rem 0 3rem; border-bottom: 4px solid var(--amber); }
+.lede { font-size: 1.25rem; color: var(--muted); }
+
+/* Text on the left, chart on the right; stacks on small screens */
+.insight {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
+  gap: 2rem;
+  padding: 3.5rem 0;
+  border-bottom: 1px solid var(--line);
+}
+figure { margin: 0; }
+figure > div {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  min-height: 320px;
+}
+figcaption { font-size: 0.875rem; color: var(--muted); margin-top: 0.5rem; }
+
+.notes { padding: 3rem 0; }
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding: 1.5rem 1.25rem; text-align: center; color: var(--muted);
+}
+
+/* ---------- Chart elements (used by main.js) ---------- */
+.line-main { fill: none; stroke: var(--blue); stroke-width: 3; }
+.dot { fill: var(--blue); stroke: #fff; stroke-width: 2; }
+.dot:focus-visible, .dot:hover { fill: var(--amber); outline: none; }
+.axis text { fill: var(--muted); font-size: 12px; }
+.axis path, .axis line { stroke: var(--line); }
+
+.tooltip {
+  position: fixed; pointer-events: none; opacity: 0;
+  background: var(--ink); color: #fff;
+  padding: 0.4rem 0.7rem; border-radius: var(--radius);
+  font-size: 0.875rem; z-index: 30;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 800px) {
+  .insight { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}

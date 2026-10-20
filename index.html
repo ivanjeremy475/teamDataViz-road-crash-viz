@@ -1,1 +1,84 @@
-<h1>Hello</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- TODO: replace with your own descriptive title (the unit requires one) -->
+  <title>Hospitalised Road Crash Injuries in Australia, 2011-2021</title>
+  <link rel="stylesheet" href="css/style.css">
+  <!-- D3 loaded from cdnjs, pinned to an exact version -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#story">Skip to the story</a>
+
+  <header class="site-header">
+    <nav aria-label="Story sections">
+      <span class="brand">Road crash injuries</span>
+      <ul>
+        <li><a href="#trend">Trend</a></li>
+        <li><a href="#road-users">Road users</a></li>
+        <li><a href="#who">Who is affected</a></li>
+        <li><a href="#limits">About the data</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="story">
+    <!-- Intro: state your single central message here -->
+    <section class="hero">
+      <h1>Behind every road death, many more people are hospitalised</h1>
+      <p class="lede">TODO: one or two sentences stating your central message and who this story is for.</p>
+    </section>
+
+    <!-- Insight 1: change over time (line chart) -->
+    <section id="trend" class="insight">
+      <div class="text">
+        <h2>TODO: headline that states the finding</h2>
+        <p>TODO: explain what the viewer should notice in the chart.</p>
+      </div>
+      <figure>
+        <div id="chart-trend" role="img" aria-label="Line chart of hospitalised injuries per year"></div>
+        <figcaption>Source: BITRE hospitalised injury data. Placeholder values until real data is loaded.</figcaption>
+      </figure>
+    </section>
+
+    <!-- Insight 2: comparison across road user types (bar chart) -->
+    <section id="road-users" class="insight">
+      <div class="text">
+        <h2>TODO: headline for road user comparison</h2>
+        <p>TODO: explain the finding. Add a filter or toggle here if it helps the story.</p>
+      </div>
+      <figure>
+        <div id="chart-roadusers" role="img" aria-label="Bar chart by road user type"></div>
+        <figcaption>TODO: caption and source.</figcaption>
+      </figure>
+    </section>
+
+    <!-- Insight 3: age / sex / state / First Nations (your most custom chart) -->
+    <section id="who" class="insight">
+      <div class="text">
+        <h2>TODO: headline for who is affected</h2>
+        <p>TODO: explain the finding.</p>
+      </div>
+      <figure>
+        <div id="chart-who" role="img" aria-label="Chart of who is affected"></div>
+        <figcaption>TODO: caption and source.</figcaption>
+      </figure>
+    </section>
+
+    <!-- Limitations: required by the brief -->
+    <section id="limits" class="notes">
+      <h2>About the data</h2>
+      <p>These figures are raw counts of hospitalised injuries. Jurisdictions differ greatly in population, so comparing counts between places such as the Northern Territory and Victoria can mislead. TODO: add the rest of your limitations and your sources.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>COS30045 Data Visualisation Project. TODO: team name and members.</p>
+  </footer>
+
+  <div id="tooltip" class="tooltip" role="status" aria-live="polite"></div>
+</body>
+</html>
