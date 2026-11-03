@@ -5,80 +5,135 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- TODO: replace with your own descriptive title (the unit requires one) -->
   <title>Hospitalised Road Crash Injuries in Australia, 2011-2021</title>
+  <script>document.documentElement.className = "js";</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=Newsreader:wght@500;700&display=swap">
   <link rel="stylesheet" href="css/style.css">
-  <!-- D3 loaded from cdnjs, pinned to an exact version -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
   <script src="js/main.js" defer></script>
 </head>
 <body>
-  <a class="skip-link" href="#story">Skip to the story</a>
-
+  <a class="skip-link" href="#story">Skip to content</a>
   <header class="site-header">
-    <nav aria-label="Story sections">
-      <span class="brand">Road crash injuries</span>
+    <nav aria-label="Main">
+      <a class="brand" href="#overview">Road crash injuries</a>
       <ul>
-        <li><a href="#trend">Trend</a></li>
-        <li><a href="#road-users">Road users</a></li>
-        <li><a href="#who">Who is affected</a></li>
-        <li><a href="#limits">About the data</a></li>
+        <li><a href="#overview" data-view="overview">Overview</a></li>
+        <li><a href="#trend" data-view="trend">Trend</a></li>
+        <li><a href="#road-users" data-view="road-users">Road users</a></li>
+        <li><a href="#who" data-view="who">Who is affected</a></li>
+        <li><a href="#limits" data-view="limits">About the data</a></li>
       </ul>
     </nav>
   </header>
 
   <main id="story">
-    <!-- Intro: state your single central message here -->
-    <section class="hero">
-      <h1>Behind every road death, many more people are hospitalised</h1>
-      <p class="lede">TODO: one or two sentences stating your central message and who this story is for.</p>
-    </section>
-
-    <!-- Insight 1: change over time (line chart) -->
-    <section id="trend" class="insight">
-      <div class="text">
-        <h2>TODO: headline that states the finding</h2>
-        <p>TODO: explain what the viewer should notice in the chart.</p>
+    <!-- ============ OVERVIEW ============ -->
+    <section class="view" id="overview" data-title="Overview">
+      <div class="hero">
+        <p class="kicker">Australia, 2011-2021</p>
+        <h1 tabindex="-1">Behind every road death, many more people are hospitalised</h1>
+        <!-- DRAFT text: edit to match the story your team chooses -->
+        <p class="lede">Road crash deaths make the headlines, but far more people are admitted to hospital with injuries that can change their lives. This story uses national hospital data to show how that burden changed over a decade and who carries it.</p>
+        <div class="stats">
+          <div class="stat"><strong id="stat-total">-</strong><span>hospitalised after road crashes, 2011-2021</span></div>
+          <div class="stat"><strong id="stat-change">-</strong><span>change in yearly hospitalisations, 2011 to 2021</span></div>
+          <div class="stat"><strong id="stat-cyc">-</strong><span>were motorcyclists or pedal cyclists</span></div>
+          <div class="stat"><strong id="stat-male">-</strong><span>were male</span></div>
+        </div>
       </div>
-      <figure>
-        <div id="chart-trend" role="img" aria-label="Line chart of hospitalised injuries per year"></div>
-        <figcaption>Source: BITRE hospitalised injury data. Placeholder values until real data is loaded.</figcaption>
-      </figure>
-    </section>
-
-    <!-- Insight 2: comparison across road user types (bar chart) -->
-    <section id="road-users" class="insight">
-      <div class="text">
-        <h2>TODO: headline for road user comparison</h2>
-        <p>TODO: explain the finding. Add a filter or toggle here if it helps the story.</p>
+      <h2 class="section-title">Explore the story</h2>
+      <div class="cards">
+        <a class="card link-card" href="#trend"><h3>Trend over time</h3><p>Did yearly hospitalisations rise or fall, and what happened in 2020?</p><span>View chart →</span></a>
+        <a class="card link-card" href="#road-users"><h3>Road users</h3><p>Drivers, passengers, motorcyclists, cyclists and pedestrians compared.</p><span>View chart →</span></a>
+        <a class="card link-card" href="#who"><h3>Who is affected</h3><p>How hospitalisations differ by age group and sex.</p><span>View chart →</span></a>
       </div>
-      <figure>
-        <div id="chart-roadusers" role="img" aria-label="Bar chart by road user type"></div>
-        <figcaption>TODO: caption and source.</figcaption>
-      </figure>
+      <p class="note-line">Who is this for? Anyone interested in road safety, including policy makers, health planners, researchers and the general public. All figures are raw counts, so please read <a href="#limits">About the data</a> before comparing groups.</p>
     </section>
 
-    <!-- Insight 3: age / sex / state / First Nations (your most custom chart) -->
-    <section id="who" class="insight">
-      <div class="text">
-        <h2>TODO: headline for who is affected</h2>
-        <p>TODO: explain the finding.</p>
+    <!-- ============ TREND ============ -->
+    <section class="view" id="trend" data-title="Trend">
+      <header class="view-head">
+        <p class="kicker">Trend over time</p>
+        <h2 tabindex="-1">Hospitalised injuries rose about 16% over the decade</h2>
+        <p class="lede">Each year, between 34,000 and 40,000 people were admitted to hospital after a road crash. The count grew from 34,033 in 2011 to 39,505 in 2021.</p>
+      </header>
+      <div class="view-grid">
+        <figure>
+          <div id="chart-trend" role="img" aria-label="Line chart of hospitalised road crash injuries per year, 2011 to 2021"></div>
+          <figcaption>Hospitalised road crash injuries per year. Source: BITRE (AIHW National Hospital Morbidity Database). Raw counts.</figcaption>
+        </figure>
+        <aside>
+          <div class="card"><h3>How to read this chart</h3><p>Each dot is one year. Hover over a dot, or tab to it with the keyboard, to see the exact count. The vertical axis starts at zero so the change is not exaggerated.</p></div>
+          <div class="card callout"><h3>What stands out</h3><p>Numbers peaked at 39,866 in 2019, then fell to 37,966 in 2020, about 5% lower. They rebounded to 39,505 in 2021. The 2020 fall coincides with the first year of COVID-19, but this data alone cannot show why.</p></div>
+          <div class="card"><h3>Keep in mind</h3><p>A rising count does not necessarily mean roads became more dangerous. More people, and more travel, can also push totals up.</p></div>
+        </aside>
       </div>
-      <figure>
-        <div id="chart-who" role="img" aria-label="Chart of who is affected"></div>
-        <figcaption>TODO: caption and source.</figcaption>
-      </figure>
+      <nav class="pager"><a href="#overview">← Overview</a><a href="#road-users">Next: Road users →</a></nav>
     </section>
 
-    <!-- Limitations: required by the brief -->
-    <section id="limits" class="notes">
-      <h2>About the data</h2>
-      <p>These figures are raw counts of hospitalised injuries. Jurisdictions differ greatly in population, so comparing counts between places such as the Northern Territory and Victoria can mislead. TODO: add the rest of your limitations and your sources.</p>
+    <!-- ============ ROAD USERS ============ -->
+    <section class="view" id="road-users" data-title="Road users">
+      <header class="view-head">
+        <p class="kicker">Road users</p>
+        <h2 tabindex="-1">Motorcyclists and cyclists account for about 41% of injuries</h2>
+        <p class="lede">Car drivers make up the largest single group, but people on motorbikes and bicycles together account for 167,684 hospitalisations over the decade.</p>
+      </header>
+      <div class="view-grid">
+        <figure>
+          <div id="chart-roadusers" role="img" aria-label="Bar chart of hospitalised injuries by road user type, 2011 to 2021 combined"></div>
+          <figcaption>Total hospitalised injuries 2011-2021 by road user. Amber bars: motorcyclists and pedal cyclists. Source: BITRE. Raw counts.</figcaption>
+        </figure>
+        <aside>
+          <div class="card"><h3>How to read this chart</h3><p>Each bar is the total for one type of road user from 2011 to 2021, longest first. Hover over a bar for the exact figure.</p></div>
+          <div class="card callout"><h3>What stands out</h3><p>Car drivers have 135,063 hospitalisations (about 33%). Motorcyclists follow with 92,322 and pedal cyclists with 75,362. Pedestrians account for 28,532.</p></div>
+          <div class="card"><h3>Keep in mind</h3><p>These are counts, not risk. We do not know how many people ride or drive, so this does not show who is most at risk per trip.</p></div>
+        </aside>
+      </div>
+      <nav class="pager"><a href="#trend">← Trend</a><a href="#who">Next: Who is affected →</a></nav>
+    </section>
+
+    <!-- ============ WHO ============ -->
+    <section class="view" id="who" data-title="Who is affected">
+      <header class="view-head">
+        <p class="kicker">Who is affected</p>
+        <h2 tabindex="-1">Men and people aged 40-64 are hospitalised most</h2>
+        <p class="lede">Males account for about 65% of hospitalisations, and the 40-64 age group has the highest total.</p>
+      </header>
+      <div class="view-grid">
+        <figure>
+          <div id="chart-who" role="img" aria-label="Grouped bar chart of hospitalised injuries by age group and sex, 2011 to 2021 combined"></div>
+          <figcaption>Total hospitalised injuries 2011-2021 by age group and sex. Excludes 16 records with missing sex or age. Source: BITRE. Raw counts.</figcaption>
+        </figure>
+        <aside>
+          <div class="card"><h3>How to read this chart</h3><p>Each pair of bars is an age group, with female in blue and male in amber. Hover over a bar for the exact figure.</p></div>
+          <div class="card callout"><h3>What stands out</h3><p>Males: 266,763. Females: 144,106. The 40-64 group has 133,729 hospitalisations, followed by 26-39 (99,495) and 17-25 (88,925).</p></div>
+          <div class="card"><h3>Keep in mind</h3><p>Age bands are different widths. The 17-25 band covers nine years of age but the 40-64 band covers 25, so per year of age the younger group is much higher (about 9,900 vs 5,300 a year).</p></div>
+        </aside>
+      </div>
+      <nav class="pager"><a href="#road-users">← Road users</a><a href="#limits">Next: About the data →</a></nav>
+    </section>
+
+    <!-- ============ ABOUT THE DATA ============ -->
+    <section class="view" id="limits" data-title="About the data">
+      <header class="view-head">
+        <p class="kicker">About the data</p>
+        <h2 tabindex="-1">Where the numbers come from, and what they can't tell you</h2>
+      </header>
+      <div class="cards">
+        <div class="card"><h3>Source</h3><p>Bureau of Infrastructure and Transport Research Economics (BITRE), hospitalised injury data for 2011-2021, based on the AIHW National Hospital Morbidity Database.</p></div>
+        <div class="card"><h3>What we counted</h3><p>Hospitalisations where the cause of injury is a traffic (road crash) event. Counts exclude people who died in hospital. Our yearly totals match BITRE's published Table 1.</p></div>
+        <div class="card"><h3>How we processed it</h3><p>In KNIME we filtered the raw data to traffic injuries, then summed hospitalisations by year, remoteness, age group, sex, road user and counterparty (17,953 rows). TODO: add your cleaning decisions.</p></div>
+        <div class="card callout"><h3>Raw counts, not rates</h3><p>Figures are not adjusted for population, travel or distance driven, so comparing groups of different size can mislead. A bigger count does not mean a higher risk per person.</p></div>
+        <div class="card"><h3>Missing and excluded records</h3><p>15 hospitalisations have missing or indeterminate sex and 1 has a missing age group, so they are left out of the age and sex chart. Remoteness is missing for 8,833 hospitalisations.</p></div>
+        <div class="card"><h3>Limitations</h3><p>This data covers hospitalisations only, not injuries treated elsewhere, and cannot explain why patterns change. TODO: add any further limitations.</p></div>
+      </div>
+      <nav class="pager"><a href="#who">← Who is affected</a><a href="#overview">Back to overview →</a></nav>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <p>COS30045 Data Visualisation Project. TODO: team name and members.</p>
-  </footer>
-
+  <footer class="site-footer"><p>COS30045 Data Visualisation Project. TODO: team name and members.</p></footer>
   <div id="tooltip" class="tooltip" role="status" aria-live="polite"></div>
 </body>
 </html>

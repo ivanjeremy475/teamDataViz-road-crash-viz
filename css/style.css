@@ -1,120 +1,84 @@
 /* ==========================================================
-   style.css - site styles for the road crash injuries story
-   Palette is colour-blind-friendly: blue and amber carry the
-   main contrast, red is reserved for emphasis only.
+   style.css - road crash injuries story
+   Colour-blind-friendly palette: blue and amber carry the contrast.
    ========================================================== */
-
 :root {
-  --paper: #f4f6f8;
-  --surface: #ffffff;
-  --ink: #1c2b39;
-  --muted: #55636f;
-  --line: #d3dae0;
-  --blue: #1f5f8b;
-  --amber: #c98a00;
-  --red: #b3362f;
-  --radius: 4px;
+  --paper: #f4f6f8; --surface: #fff; --ink: #14222f; --navy: #14222f;
+  --muted: #55636f; --line: #d3dae0; --blue: #1f5f8b; --amber: #c98a00;
+  --amber-soft: #fbf1d6; --radius: 8px;
 }
-
 * { box-sizing: border-box; }
-
 html { scroll-behavior: smooth; }
-
-body {
-  margin: 0;
-  background: var(--paper);
-  color: var(--ink);
-  font-family: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
-  font-size: 1.0625rem;
-  line-height: 1.6;
-}
-
-h1, h2 {
-  font-family: "Newsreader", Georgia, serif;
-  line-height: 1.15;
-  margin: 0 0 0.6em;
-}
-h1 { font-size: clamp(2rem, 5vw, 3.2rem); max-width: 22ch; }
-h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
-p  { max-width: 62ch; margin: 0 0 1em; }
-
+body { margin: 0; background: var(--paper); color: var(--ink); font: 1.0625rem/1.65 "IBM Plex Sans", "Segoe UI", system-ui, sans-serif; }
+h1, h2, h3 { font-family: "Newsreader", Georgia, serif; line-height: 1.15; margin: 0 0 0.5em; }
+h1 { font-size: clamp(2.1rem, 5.5vw, 3.6rem); max-width: 20ch; }
+h2 { font-size: clamp(1.6rem, 3.5vw, 2.3rem); max-width: 28ch; }
+h3 { font-size: 1.2rem; }
+p { margin: 0 0 1em; }
 a { color: var(--blue); }
-a:focus-visible, button:focus-visible {
-  outline: 3px solid var(--amber);
-  outline-offset: 2px;
-}
-
-.skip-link {
-  position: absolute; left: -999px; top: 0;
-  background: var(--ink); color: #fff; padding: 0.5rem 1rem;
-}
+:focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; }
+h1:focus, h2:focus { outline: none; }
+.skip-link { position: absolute; left: -999px; top: 0; background: var(--ink); color: #fff; padding: .5rem 1rem; }
 .skip-link:focus { left: 0; z-index: 20; }
 
-/* ---------- Header / navigation ---------- */
-.site-header {
-  position: sticky; top: 0; z-index: 10;
-  background: var(--surface);
-  border-bottom: 1px solid var(--line);
-}
-.site-header nav {
-  max-width: 1100px; margin: 0 auto; padding: 0.75rem 1.25rem;
-  display: flex; flex-wrap: wrap; gap: 0.5rem 2rem;
-  align-items: center; justify-content: space-between;
-}
-.brand { font-weight: 600; }
-.site-header ul { list-style: none; display: flex; flex-wrap: wrap; gap: 1.25rem; margin: 0; padding: 0; }
-.site-header a { text-decoration: none; color: var(--ink); }
-.site-header a:hover { color: var(--blue); text-decoration: underline; }
+/* Navigation */
+.site-header { position: sticky; top: 0; z-index: 10; background: var(--navy); }
+.site-header nav { max-width: 1100px; margin: 0 auto; padding: .8rem 1.25rem; display: flex; flex-wrap: wrap; gap: .5rem 2rem; align-items: center; justify-content: space-between; }
+.brand { font: 700 1.2rem "Newsreader", Georgia, serif; color: #fff; text-decoration: none; }
+.site-header ul { list-style: none; display: flex; flex-wrap: wrap; gap: .25rem; margin: 0; padding: 0; }
+.site-header li a { display: block; padding: .35rem .8rem; border-radius: 999px; color: #d6dee5; text-decoration: none; font-size: .95rem; }
+.site-header li a:hover { background: rgba(255,255,255,.12); color: #fff; }
+.site-header li a[aria-current="page"] { background: var(--amber); color: #14222f; font-weight: 600; }
 
-/* ---------- Layout ---------- */
-main { max-width: 1100px; margin: 0 auto; padding: 0 1.25rem; }
+/* Views: with JS, only the active one shows */
+main { max-width: 1100px; margin: 0 auto; padding: 0 1.25rem 3rem; }
+.js .view { display: none; }
+.js .view.active { display: block; animation: fade .3s ease; }
+@keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 
-.hero { padding: 4rem 0 3rem; border-bottom: 4px solid var(--amber); }
-.lede { font-size: 1.25rem; color: var(--muted); }
+/* Overview */
+.hero { background: var(--navy); color: #fff; margin: 1.5rem 0 2.5rem; padding: clamp(2rem, 5vw, 3.5rem); border-radius: var(--radius); }
+.kicker { text-transform: uppercase; letter-spacing: .08em; font-size: .8rem; font-weight: 600; color: var(--amber); margin-bottom: .6rem; }
+.hero .lede { color: #d6dee5; max-width: 60ch; font-size: 1.15rem; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1rem; margin-top: 2rem; }
+.stat { background: rgba(255,255,255,.08); border-left: 4px solid var(--amber); padding: .9rem 1rem; border-radius: 4px; }
+.stat strong { display: block; font: 700 2.2rem "Newsreader", Georgia, serif; color: #fff; }
+.stat span { font-size: .9rem; color: #c3cdd6; }
+.section-title { margin-top: 1rem; }
+.note-line { max-width: 70ch; color: var(--muted); margin-top: 2rem; }
 
-/* Text on the left, chart on the right; stacks on small screens */
-.insight {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
-  gap: 2rem;
-  padding: 3.5rem 0;
-  border-bottom: 1px solid var(--line);
-}
+/* Cards */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.1rem; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.2rem 1.3rem; }
+.card p { margin: 0; color: var(--muted); font-size: .98rem; }
+.card.callout { background: var(--amber-soft); border-color: #ecd9a0; }
+.card.callout p { color: var(--ink); }
+.link-card { text-decoration: none; color: inherit; transition: transform .15s, border-color .15s; }
+.link-card:hover { transform: translateY(-3px); border-color: var(--blue); }
+.link-card span { display: inline-block; margin-top: .8rem; color: var(--blue); font-weight: 600; }
+
+/* Chart views */
+.view-head { padding: 2.5rem 0 1.5rem; }
+.view-head .lede { max-width: 62ch; color: var(--muted); font-size: 1.12rem; }
+.view-grid { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: 1.5rem; align-items: start; }
+aside { display: grid; gap: 1rem; }
 figure { margin: 0; }
-figure > div {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  min-height: 320px;
-}
-figcaption { font-size: 0.875rem; color: var(--muted); margin-top: 0.5rem; }
+figure > div { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); min-height: 320px; }
+figcaption { font-size: .85rem; color: var(--muted); margin-top: .5rem; }
+.pager { display: flex; justify-content: space-between; gap: 1rem; margin-top: 2.5rem; padding-top: 1.2rem; border-top: 1px solid var(--line); }
+.pager a { font-weight: 600; text-decoration: none; }
+.pager a:hover { text-decoration: underline; }
 
-.notes { padding: 3rem 0; }
-.site-footer {
-  border-top: 1px solid var(--line);
-  padding: 1.5rem 1.25rem; text-align: center; color: var(--muted);
-}
+.site-footer { border-top: 1px solid var(--line); padding: 1.5rem 1.25rem; text-align: center; color: var(--muted); }
 
-/* ---------- Chart elements (used by main.js) ---------- */
+/* Chart elements (used by main.js) */
 .line-main { fill: none; stroke: var(--blue); stroke-width: 3; }
 .dot { fill: var(--blue); stroke: #fff; stroke-width: 2; }
 .dot:focus-visible, .dot:hover { fill: var(--amber); outline: none; }
-.axis text { fill: var(--muted); font-size: 12px; }
+.axis text, .chart-label { fill: var(--muted); font-size: 12px; }
 .axis path, .axis line { stroke: var(--line); }
+.bar:hover, .bar:focus-visible { opacity: .8; outline: none; }
+.tooltip { position: fixed; pointer-events: none; opacity: 0; background: var(--ink); color: #fff; padding: .4rem .7rem; border-radius: 4px; font-size: .875rem; z-index: 30; }
 
-.tooltip {
-  position: fixed; pointer-events: none; opacity: 0;
-  background: var(--ink); color: #fff;
-  padding: 0.4rem 0.7rem; border-radius: var(--radius);
-  font-size: 0.875rem; z-index: 30;
-}
-
-/* ---------- Responsive ---------- */
-@media (max-width: 800px) {
-  .insight { grid-template-columns: 1fr; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  * { transition: none !important; animation: none !important; }
-}
+@media (max-width: 860px) { .view-grid { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }
