@@ -20,9 +20,9 @@
       <a class="brand" href="#overview">Road crash injuries</a>
       <ul>
         <li><a href="#overview" data-view="overview">Overview</a></li>
-        <li><a href="#trend" data-view="trend">Trend</a></li>
-        <li><a href="#road-users" data-view="road-users">Road users</a></li>
-        <li><a href="#who" data-view="who">Who is affected</a></li>
+        <li><a href="#trend" data-view="trend">National hopitlization</a></li>
+        <li><a href="#road-users" data-view="road-users">State hospitalilazion</a></li>
+        <li><a href="#who" data-view="who">FirstNation&other</a></li>
         <li><a href="#limits" data-view="limits">About the data</a></li>
       </ul>
     </nav>
@@ -52,45 +52,150 @@
       <p class="note-line">Who is this for? Anyone interested in road safety, including policy makers, health planners, researchers and the general public. All figures are raw counts, so please read <a href="#limits">About the data</a> before comparing groups.</p>
     </section>
 
-    <!-- ============ TREND ============ -->
-    <section class="view" id="trend" data-title="Trend">
+    <!-- ============ National hopitlization ============ -->
+    <section class="view" id="trend" data-title="National hopitlization">
       <header class="view-head">
         <p class="kicker">Trend over time</p>
         <h2 tabindex="-1">Hospitalised injuries rose about 16% over the decade</h2>
-        <p class="lede">Each year, between 34,000 and 40,000 people were admitted to hospital after a road crash. The count grew from 34,033 in 2011 to 39,505 in 2021.</p>
+        <p class="lede">Each year, between 34,000 and 40,000 people were admitted to hospital after a road crash. The count grew from 34,033 in 2011 to 39,505 in 2021. Below, four different views reveal the trend from different angles.</p>
       </header>
-      <div class="view-grid">
+
+      <!-- Chart 1: Line chart (annual trend) -->
+      <div class="chart-block">
+        <div class="chart-head">
+          <h3>1. Annual hospitalisations (line chart)</h3>
+          <p>Each dot is one year. Hover or tab to see the exact count.</p>
+        </div>
         <figure>
           <div id="chart-trend" role="img" aria-label="Line chart of hospitalised road crash injuries per year, 2011 to 2021"></div>
-          <figcaption>Hospitalised road crash injuries per year. Source: BITRE (AIHW National Hospital Morbidity Database). Raw counts.</figcaption>
+          <figcaption>Source: workflow1_annualTrend.csv. Raw counts.</figcaption>
         </figure>
-        <aside>
-          <div class="card"><h3>How to read this chart</h3><p>Each dot is one year. Hover over a dot, or tab to it with the keyboard, to see the exact count. The vertical axis starts at zero so the change is not exaggerated.</p></div>
-          <div class="card callout"><h3>What stands out</h3><p>Numbers peaked at 39,866 in 2019, then fell to 37,966 in 2020, about 5% lower. They rebounded to 39,505 in 2021. The 2020 fall coincides with the first year of COVID-19, but this data alone cannot show why.</p></div>
-          <div class="card"><h3>Keep in mind</h3><p>A rising count does not necessarily mean roads became more dangerous. More people, and more travel, can also push totals up.</p></div>
-        </aside>
       </div>
+
+      <!-- Chart 2: Stacked area — bed days vs hospitalisations over time -->
+      <div class="chart-block">
+        <div class="chart-head">
+          <h3>2. Hospitalisations vs bed days (stacked / dual line)</h3>
+          <p>How does the length of stay relate to the number of admissions each year?</p>
+        </div>
+        <figure>
+          <div id="chart-staylength" role="img" aria-label="Line chart comparing hospitalisations and total bed days per year"></div>
+          <figcaption>Source: workfloe1_hospilatStaylength.csv. Raw counts.</figcaption>
+        </figure>
+      </div>
+
+      <!-- Chart 3: Remoteness trend — multi-line -->
+      <div class="chart-block">
+        <div class="chart-head">
+          <h3>3. Trend by remoteness (multi-line)</h3>
+          <p>Are cities, regional and remote areas following the same path?</p>
+        </div>
+        <figure>
+          <div id="chart-remoteness" role="img" aria-label="Multi-line chart of hospitalised injuries per year by remoteness area"></div>
+          <figcaption>Source: Workflow1-emoteness.csv. Raw counts.</figcaption>
+        </figure>
+      </div>
+
+      <!-- Chart 4: Age group by year — heatmap -->
+      <div class="chart-block">
+        <div class="chart-head">
+          <h3>4. Age group × year (heatmap)</h3>
+          <p>Darker squares mean more hospitalisations. Spot which age group is growing fastest.</p>
+        </div>
+        <figure>
+          <div id="chart-heatmap" role="img" aria-label="Heatmap of hospitalised injuries by age group and year"></div>
+          <figcaption>Source: Workflow1Hospitalization&beddayByAgegroup.csv. Raw counts.</figcaption>
+        </figure>
+      </div>
+
+      <aside class="trend-asides">
+        <div class="card callout"><h3>What stands out</h3><p>Numbers peaked at 39,866 in 2019, then fell to 37,966 in 2020 (~5% lower), before rebounding to 39,505 in 2021. The 2020 fall coincides with the first year of COVID-19, but this data alone cannot show why.</p></div>
+        <div class="card"><h3>Keep in mind</h3><p>A rising count does not necessarily mean roads became more dangerous. More people, and more travel, can also push totals up.</p></div>
+      </aside>
+
       <nav class="pager"><a href="#overview">← Overview</a><a href="#road-users">Next: Road users →</a></nav>
     </section>
 
     <!-- ============ ROAD USERS ============ -->
     <section class="view" id="road-users" data-title="Road users">
       <header class="view-head">
-        <p class="kicker">Road users</p>
+        <p class="kicker">Road users &amp; States</p>
         <h2 tabindex="-1">Motorcyclists and cyclists account for about 41% of injuries</h2>
-        <p class="lede">Car drivers make up the largest single group, but people on motorbikes and bicycles together account for 167,684 hospitalisations over the decade.</p>
+        <p class="lede">Car drivers make up the largest single group, but people on motorbikes and bicycles together account for 167,684 hospitalisations over the decade. Explore how this varies across Australian states.</p>
       </header>
-      <div class="view-grid">
+
+      <!-- Chart 1 -->
+      <div class="chart-block">
+        <div class="chart-head">
+          <h3>1. State comparison trend (multi-line)</h3>
+          <p>How did hospitalisations change over time in each state?</p>
+        </div>
         <figure>
-          <div id="chart-roadusers" role="img" aria-label="Bar chart of hospitalised injuries by road user type, 2011 to 2021 combined"></div>
-          <figcaption>Total hospitalised injuries 2011-2021 by road user. Amber bars: motorcyclists and pedal cyclists. Source: BITRE. Raw counts.</figcaption>
+          <div id="chart-state-trend" role="img" aria-label="Multi-line chart of hospitalisations by state over time"></div>
+          <figcaption>Source: Workflow2_State comparison.csv</figcaption>
         </figure>
-        <aside>
-          <div class="card"><h3>How to read this chart</h3><p>Each bar is the total for one type of road user from 2011 to 2021, longest first. Hover over a bar for the exact figure.</p></div>
-          <div class="card callout"><h3>What stands out</h3><p>Car drivers have 135,063 hospitalisations (about 33%). Motorcyclists follow with 92,322 and pedal cyclists with 75,362. Pedestrians account for 28,532.</p></div>
-          <div class="card"><h3>Keep in mind</h3><p>These are counts, not risk. We do not know how many people ride or drive, so this does not show who is most at risk per trip.</p></div>
-        </aside>
       </div>
+
+      <!-- Chart 2 -->
+      <div class="chart-block">
+        <div class="chart-head">
+          <h3>2. Road user by state (stacked bar)</h3>
+          <p>What types of road users are injured most in each state?</p>
+        </div>
+        <figure>
+          <div id="chart-roaduser-state" role="img" aria-label="Stacked bar chart of road users by state"></div>
+          <figcaption>Source: Workflow2_roaduserbystate.csv</figcaption>
+        </figure>
+      </div>
+
+      <!-- Chart 3 -->
+      <div class="chart-block">
+        <div class="chart-head">
+          <h3>3. Counterparty by state (donut chart)</h3>
+          <p>What did vehicles collide with?</p>
+        </div>
+        <figure>
+          <div id="chart-counterparty" role="img" aria-label="Donut chart of crash counterparties"></div>
+          <figcaption>Source: Workflow2_counterpartybystate.csv</figcaption>
+        </figure>
+      </div>
+
+      <!-- Chart 4 -->
+      <div class="chart-block">
+        <div class="chart-head">
+          <h3>4. Sex by state (100% stacked bar)</h3>
+          <p>Proportion of male vs female injuries per state.</p>
+        </div>
+        <figure>
+          <div id="chart-sex-state" role="img" aria-label="Stacked bar chart of sex by state"></div>
+          <figcaption>Source: Workflow2_SexnStatetrend.csv</figcaption>
+        </figure>
+      </div>
+
+      <!-- Chart 5 -->
+      <div class="chart-block">
+        <div class="chart-head">
+          <h3>5. State trends (small multiples)</h3>
+          <p>Individual trend lines for each state to see their unique shape.</p>
+        </div>
+        <figure>
+          <div id="chart-small-multiples" role="img" aria-label="Small multiple line charts for each state"></div>
+          <figcaption>Source: Workflow2_Statetrends.csv</figcaption>
+        </figure>
+      </div>
+
+      <!-- Chart 6 -->
+      <div class="chart-block">
+        <div class="chart-head">
+          <h3>6. Age by state (grouped bar)</h3>
+          <p>Hospitalisations by age group across states.</p>
+        </div>
+        <figure>
+          <div id="chart-age-state" role="img" aria-label="Grouped bar chart of age by state"></div>
+          <figcaption>Source: Workflow2_agebystate.csv</figcaption>
+        </figure>
+      </div>
+
       <nav class="pager"><a href="#trend">← Trend</a><a href="#who">Next: Who is affected →</a></nav>
     </section>
 
@@ -98,20 +203,70 @@
     <section class="view" id="who" data-title="Who is affected">
       <header class="view-head">
         <p class="kicker">Who is affected</p>
-        <h2 tabindex="-1">Men and people aged 40-64 are hospitalised most</h2>
-        <p class="lede">Males account for about 65% of hospitalisations, and the 40-64 age group has the highest total.</p>
+        <h2 tabindex="-1">First Nations people face a higher burden of road crash injuries</h2>
+        <p class="lede">Males account for about 65% of hospitalisations overall, but looking deeper at First Nations people reveals stark differences in age, location, and road user type.</p>
       </header>
-      <div class="view-grid">
+
+      <!-- Chart 1 -->
+      <div class="chart-block">
+        <div class="chart-head">
+          <h3>1. Hospitalisations over time (multi-line)</h3>
+          <p>First Nations people vs Non-Indigenous people, 2011-2021.</p>
+        </div>
         <figure>
-          <div id="chart-who" role="img" aria-label="Grouped bar chart of hospitalised injuries by age group and sex, 2011 to 2021 combined"></div>
-          <figcaption>Total hospitalised injuries 2011-2021 by age group and sex. Excludes 16 records with missing sex or age. Source: BITRE. Raw counts.</figcaption>
+          <div id="chart-fn-trend" role="img" aria-label="Line chart comparing First Nations and Non-Indigenous hospitalisations over time"></div>
+          <figcaption>Source: Workflow3_FirstNationsvsNon-Indigenous.csv</figcaption>
         </figure>
-        <aside>
-          <div class="card"><h3>How to read this chart</h3><p>Each pair of bars is an age group, with female in blue and male in amber. Hover over a bar for the exact figure.</p></div>
-          <div class="card callout"><h3>What stands out</h3><p>Males: 266,763. Females: 144,106. The 40-64 group has 133,729 hospitalisations, followed by 26-39 (99,495) and 17-25 (88,925).</p></div>
-          <div class="card"><h3>Keep in mind</h3><p>Age bands are different widths. The 17-25 band covers nine years of age but the 40-64 band covers 25, so per year of age the younger group is much higher (about 9,900 vs 5,300 a year).</p></div>
-        </aside>
       </div>
+
+      <!-- Chart 2 -->
+      <div class="chart-block">
+        <div class="chart-head">
+          <h3>2. Age group comparison (grouped bar)</h3>
+          <p>Which age groups are most affected for each group?</p>
+        </div>
+        <figure>
+          <div id="chart-fn-age" role="img" aria-label="Grouped bar chart of age groups comparing First Nations and Non-Indigenous"></div>
+          <figcaption>Source: Workflow3_Byage.csv</figcaption>
+        </figure>
+      </div>
+
+      <!-- Chart 3 -->
+      <div class="chart-block">
+        <div class="chart-head">
+          <h3>3. Road user type (horizontal stacked bar)</h3>
+          <p>How do the road user profiles differ between the two groups?</p>
+        </div>
+        <figure>
+          <div id="chart-fn-roaduser" role="img" aria-label="Stacked bar chart of road user types by group"></div>
+          <figcaption>Source: Workflow3_ByRoaduser.csv</figcaption>
+        </figure>
+      </div>
+
+      <!-- Chart 4 -->
+      <div class="chart-block">
+        <div class="chart-head">
+          <h3>4. Remoteness comparison (grouped bar)</h3>
+          <p>Where do these injuries happen? Major cities vs regional vs remote.</p>
+        </div>
+        <figure>
+          <div id="chart-fn-remoteness" role="img" aria-label="Grouped bar chart of remoteness comparing First Nations and Non-Indigenous"></div>
+          <figcaption>Source: Workflow3_By remoteness.csv</figcaption>
+        </figure>
+      </div>
+
+      <!-- Chart 5 -->
+      <div class="chart-block">
+        <div class="chart-head">
+          <h3>5. First Nations share over time (area chart)</h3>
+          <p>What proportion of total hospitalisations involve First Nations people?</p>
+        </div>
+        <figure>
+          <div id="chart-fn-share" role="img" aria-label="Area chart showing the percentage share of First Nations hospitalisations over time"></div>
+          <figcaption>Source: Workflow3_First Nations share (%).csv</figcaption>
+        </figure>
+      </div>
+
       <nav class="pager"><a href="#road-users">← Road users</a><a href="#limits">Next: About the data →</a></nav>
     </section>
 
