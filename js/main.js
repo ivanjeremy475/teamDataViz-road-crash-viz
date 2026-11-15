@@ -33,7 +33,6 @@ const FILE_RU_COMP = "data/Workflow2_State comparison.csv";
 const FILE_FN_REMOTE = "data/Workflow3_By remoteness.csv";
 const FILE_FN_AGE = "data/Workflow3_Byage.csv";
 const FILE_FN_RU = "data/Workflow3_ByRoaduser.csv";
-const FILE_FN_SHARE = "data/Workflow3_First Nations share (%).csv";
 const FILE_FN_TREND = "data/Workflow3_FirstNationsvsNon-Indigenous.csv";
 
 const fmt = d3.format(",");
@@ -96,7 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
   d3.csv(FILE_FN_REMOTE, d3.autoType)
     .then(drawFNRemoteness)
     .catch((e) => console.error("FN Remoteness error:", e));
-  d3.csv(FILE_FN_SHARE, d3.autoType)
+  d3.csv(FILE_FN_TREND, d3.autoType)
     .then(drawFNShare)
     .catch((e) => console.error("FN Share error:", e));
 });
